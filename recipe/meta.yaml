@@ -1,0 +1,33 @@
+{% set name = "exiv2" %}
+{% set version = "0.26" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://github.com/Exiv2/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 51cffa8d19d67e1da6c1d0f570a75b8f6c814113367318c2c0407691888c5f01
+
+build:
+    number: 0
+
+requirements:
+  build:
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - cmake
+    - ninja
+  host:
+    - zlib
+    - expat
+
+about:
+  home: http://www.exiv2.org/
+  license: GPL 2.0
+  summary: Exiv2 - C++ library and a command line utility to read and write Exif, IPTC and XMP image metadata.
+
+extra:
+  recipe-maintainers:
+    - v-turin
